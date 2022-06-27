@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Lists
+
+@using (Html.BeginForm("PostUsingParameter", "Home"))
+{
+    <input type="hidden" name="checkTree" id="checkTree">
+    @Html.EJS().TreeView("treedata").NodeChecked("nodeChecked").EnablePersistence(true).ShowCheckBox(true).Fields(field =>
+    field.Id("id").ParentID("pid").Text("name").HasChildren("hasChild").Expanded("expanded")
+    .DataSource(ViewBag.dataSource)).Render()
+
+    <input type="submit" value="save" onclick="onSave()" />
+    <input type="button" value="Reset" onclick="onReset()" />
+}
+<script>
+    function nodeChecked(args) {
+        var treeObj = document.getElementById('treedata').ej2_instances[0];
+        var data = treeObj.getAllCheckedNodes();
+        $("#checkTree").val(data);
+        debugger;
+    }
+    function onSave() {
+        alert("success");
+    }
+    function onReset() {
+        var treeObj = document.getElementById('treedata').ej2_instances[0];
+        treeObj.uncheckAll();
+    }
+</script>
+
+
+
+
+
+
+
+
