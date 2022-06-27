@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+<formmethod ="post" enctype="multipart/form-data" asp-controller="Home" asp-action="SaveData">
+
+    <input type="hidden" name="checkTree" id="checkTree">
+
+    <ejs-treeviewid ="treedata" showCheckBox="true" nodeChecked="nodeChecked">
+
+        <e-treeview-fieldsdataSource ="ViewBag.dataSource" id="id" parentId="pid" text="name" hasChildren="hasChild" expanded="expanded">
+            </e-treeview-fields>
+
+            </ejs-treeview>
+
+            <inputtype ="submit" value="save" />
+
+            </form>
+
+
+
+            <script>
+
+                function nodeChecked() {
+
+                    $("#checkTree").val(this.checkedNodes);
+
+                }
+
+            </script>
